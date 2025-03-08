@@ -3,6 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
 const connectDB = require("./config/db");
+const userRoutes = require('./routes/auth');
 
 // Initialize Express app
 const app = express();
@@ -16,6 +17,7 @@ app.use(morgan("dev"));
 connectDB();
 
 // Routes
+app.use('/api/users', userRoutes);
 
 // Start Server
 const PORT = process.env.PORT || 5000;
